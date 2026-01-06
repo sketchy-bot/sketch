@@ -36,7 +36,7 @@
         },
         MAX_LENGTH: {
           type: Number,
-          value: 65535,
+          value: 131071,
           readOnly: true
         },
         hidden: {
@@ -132,14 +132,14 @@
       // Public functions
 
       drawStart: function() {
-        if(this.length < this.MAX_LENGTH) {
+        if(this.length <= this.MAX_LENGTH) {
           this._setLength(this.length + (this.lines.length == 0 ? 0 : 1));
           this.push('lines', []);
         }
       },
 
       draw: function(x, y) {
-        if(this.length < this.MAX_LENGTH) {
+        if(this.length <= this.MAX_LENGTH) {
           this.push('lines.' + (this.lines.length - 1), x, y);
           this._setLength(this.length + 4);
         }
